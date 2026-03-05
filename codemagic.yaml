@@ -3,10 +3,7 @@ workflows:
     name: RunAnywhere Android Build
     max_build_duration: 60
     environment:
-      image: ubuntu-22.04
-      jdk: openjdk17
       vars:
-        # Optional environment variables
         RUNANYWHERE_TEST_LOCAL: true
     scripts:
       - name: Checkout repository
