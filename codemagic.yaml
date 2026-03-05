@@ -2,19 +2,16 @@ workflows:
   android-agent:
     name: Android Agent Build
     max_build_duration: 60
+    scripts:
+      - name: Install Dependencies
+        script: |
+          ./gradlew clean
+      - name: Build Debug APK
+        script: |
+          ./gradlew :android-use-agent:assembleDebug
+    artifacts:
+      - build/**/outputs/**/*.apk
     environment:
       vars:
-        RUNANYWHERE_TEST_LOCAL: true
-      jdk: openjdk17
-      gradle: 8.13
-      flutter: none
-      xcode: none
-    scripts:
-      - name: Build Debug APK
-        script: ./gradlew assembleDebug
-    artifacts:
-      - build/outputs/**/*.apk
-    publishing:
-      email:
-        recipients:
-          - kjackson96@live.co.uk
+        RUNANYWHERE_TEST: "true"
+      android: true
