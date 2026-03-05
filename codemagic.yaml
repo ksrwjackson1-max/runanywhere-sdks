@@ -5,11 +5,10 @@ workflows:
     environment:
       vars:
         RUNANYWHERE_TEST_LOCAL: true
+      jdk: openjdk17
+      gradle: 8.13
       flutter: none
       xcode: none
-      android:
-        gradle: 8.13
-        jdk: openjdk17
     scripts:
       - name: Build Debug APK
         script: ./gradlew assembleDebug
@@ -18,4 +17,4 @@ workflows:
     publishing:
       email:
         recipients:
-          - you@example.com
+          - kjackson96@live.co.uk
