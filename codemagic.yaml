@@ -1,17 +1,15 @@
 workflows:
   android-agent:
-    name: RunAnywhere Android Build
-    max_build_duration: 60
+    name: Build Android Agent
     environment:
       vars:
-        RUNANYWHERE_TEST_LOCAL: true
+        ANDROID_HOME: /usr/local/android-sdk
+      flutter: stable
+      xcode: latest
+      cocoapods: default
     scripts:
-      - name: Checkout repository
-        script: git checkout $CM_BRANCH
       - name: Build Debug APK
-        script: ./gradlew :Playground:android-use-agent:app:assembleDebug
-      - name: Build Release APK
-        script: ./gradlew :Playground:android-use-agent:app:assembleRelease
+        script: |
+          ./gradlew :android-use-agent:app:assembleDebug
     artifacts:
-      - build/outputs/**/*.apk
-      - Playground/android-use-agent/app/build/outputs/**/*.apk
+      - android-use-agent/app/build/outputs/**/*.apk

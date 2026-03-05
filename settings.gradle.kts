@@ -30,17 +30,21 @@ project(":runanywhere-kotlin").projectDir = file("sdk/runanywhere-kotlin")
 
 // Backend modules
 include(":runanywhere-core-llamacpp")
-project(":runanywhere-core-llamacpp").projectDir = file("sdk/runanywhere-kotlin/modules/runanywhere-core-llamacpp")
+project(":runanywhere-core-llamacpp").projectDir =
+    file("sdk/runanywhere-kotlin/modules/runanywhere-core-llamacpp")
 
 include(":runanywhere-core-onnx")
-project(":runanywhere-core-onnx").projectDir = file("sdk/runanywhere-kotlin/modules/runanywhere-core-onnx")
+project(":runanywhere-core-onnx").projectDir =
+    file("sdk/runanywhere-kotlin/modules/runanywhere-core-onnx")
 
 include(":runanywhere-core-rag")
-project(":runanywhere-core-rag").projectDir = file("sdk/runanywhere-kotlin/modules/runanywhere-core-rag")
+project(":runanywhere-core-rag").projectDir =
+    file("sdk/runanywhere-kotlin/modules/runanywhere-core-rag")
 
 // Example apps
-include(":RunAnywhereAI")
-project(":RunAnywhereAI").projectDir = file("examples/android/RunAnywhereAI")
-
-// Optional: IntelliJ plugin demo
+includeBuild("examples/android/RunAnywhereAI")
 includeBuild("examples/intellij-plugin-demo/plugin")
+
+// Playground / Android agent app
+include(":android-use-agent")
+project(":android-use-agent").projectDir = file("Playground/android-use-agent/app")
