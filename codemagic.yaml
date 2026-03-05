@@ -8,11 +8,11 @@ workflows:
     scripts:
       - name: Build Debug APK
         script: |
-          ./gradlew :Playground:android-use-agent:app:assembleDebug
+          ./gradlew :examples:android:RunAnywhereAI:app:assembleDebug
 
       - name: Build Release APK
         script: |
-          ./gradlew :Playground:android-use-agent:app:assembleRelease
+          ./gradlew :examples:android:RunAnywhereAI:app:assembleRelease
 
     artifacts:
-      - "Playground/android-use-agent/app/build/outputs/**/*.apk"
+      - "examples/android/RunAnywhereAI/app/build/outputs/**/*.apk"
