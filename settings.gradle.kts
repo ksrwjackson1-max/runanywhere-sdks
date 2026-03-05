@@ -1,12 +1,6 @@
 pluginManagement {
     repositories {
-        google {
-            content {
-                includeGroupByRegex("com\\.android.*")
-                includeGroupByRegex("com\\.google.*")
-                includeGroupByRegex("androidx.*")
-            }
-        }
+        google()
         mavenCentral()
         gradlePluginPortal()
     }
@@ -18,17 +12,15 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         maven { url = uri("https://jitpack.io") }
-        mavenLocal()
     }
 }
 
 rootProject.name = "RunAnywhere"
 
-// Kotlin Multiplatform SDK
+// SDK modules
 include(":runanywhere-kotlin")
 project(":runanywhere-kotlin").projectDir = file("sdk/runanywhere-kotlin")
 
-// Backend modules
 include(":runanywhere-core-llamacpp")
 project(":runanywhere-core-llamacpp").projectDir =
     file("sdk/runanywhere-kotlin/modules/runanywhere-core-llamacpp")
@@ -40,11 +32,3 @@ project(":runanywhere-core-onnx").projectDir =
 include(":runanywhere-core-rag")
 project(":runanywhere-core-rag").projectDir =
     file("sdk/runanywhere-kotlin/modules/runanywhere-core-rag")
-
-// Example apps
-includeBuild("examples/android/RunAnywhereAI")
-includeBuild("examples/intellij-plugin-demo/plugin")
-
-// Playground / Android agent app
-include(":android-use-agent")
-project(":android-use-agent").projectDir = file("Playground/android-use-agent/app")

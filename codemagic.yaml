@@ -1,15 +1,10 @@
 workflows:
   android-agent:
-    name: Build Android Agent
-    environment:
-      vars:
-        ANDROID_HOME: /usr/local/android-sdk
-      flutter: stable
-      xcode: latest
-      cocoapods: default
+    name: Android Use Agent Build
     scripts:
       - name: Build Debug APK
         script: |
-          ./gradlew :android-use-agent:app:assembleDebug
+          cd Playground/android-use-agent
+          ./gradlew clean assembleDebug
     artifacts:
-      - android-use-agent/app/build/outputs/**/*.apk
+      - Playground/android-use-agent/app/build/outputs/**/*.apk
