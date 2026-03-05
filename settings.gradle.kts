@@ -37,9 +37,10 @@ include(":runanywhere-core-onnx")
 project(":runanywhere-core-onnx").projectDir =
     file("sdk/runanywhere-kotlin/modules/runanywhere-core-onnx")
 
+include(":runanywhere-core-rag")
+project(":runanywhere-core-rag").projectDir =
+    file("sdk/runanywhere-kotlin/modules/runanywhere-core-rag")
+
 // Example apps (composite builds for IDE support)
 includeBuild("examples/android/RunAnywhereAI")
 includeBuild("examples/intellij-plugin-demo/plugin")
-
-include(":examples:android:RunAnywhereAI:app")
-project(":examples:android:RunAnywhereAI:app").projectDir = file("examples/android/RunAnywhereAI/app")
