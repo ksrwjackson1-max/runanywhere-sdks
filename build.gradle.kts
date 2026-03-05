@@ -1,15 +1,16 @@
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
-    alias(libs.plugins.compose.compiler) // if using Compose
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.kotlinCompose)
+    alias(libs.plugins.kotlinSerialization)
 }
 
 android {
-    namespace = "com.runanywhere.ai"
+    namespace = "com.example.androiduseagent"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.runanywhere.ai"
+        applicationId = "com.example.androiduseagent"
         minSdk = 26
         targetSdk = 34
         versionCode = 1
@@ -24,18 +25,15 @@ android {
                 "proguard-rules.pro"
             )
         }
-        debug {
-            applicationIdSuffix = ".debug"
-        }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 
     buildFeatures {
@@ -43,17 +41,48 @@ android {
     }
 
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.3" // match your Compose version
+        kotlinCompilerExtensionVersion = "1.5.3" // Match your Compose BOM version if needed
+    }
+
+    packaging {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+        }
     }
 }
 
 dependencies {
-    implementation(project(":runanywhere-kotlin"))
-    implementation(project(":runanywhere-core-llamacpp"))
-    implementation(project(":runanywhere-core-onnx"))
-    implementation(project(":runanywhere-core-rag"))
+    implementation(libs.androidxCoreKtx)
+    implementation(libs.androidxAppcompat)
+    implementation(libs.material)
+    implementation(libs.androidxActivityCompose)
+    implementation(libs.androidxLifecycleRuntimeKtx)
+    implementation(libs.androidxLifecycleViewmodelCompose)
 
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("androidx.appcompat:appcompat:1.7.0")
-    implementation("com.google.android.material:material:1.11.0")
+    // Compose BOM
+    implementation(platform(libs.androidxComposeBom))
+    implementation(libs.androidxUi)
+    implementation(libs.androidxUiTooling)
+    implementation(libs.androidxMaterial3)
+    implementation(libs.androidxMaterialIconsExtended)
+
+    // WorkManager
+    implementation(libs.androidxWorkRuntimeKtx)
+
+    // Kotlin Coroutines
+    implementation(libs.kotlinxCoroutinesCore)
+    implementation(libs.kotlinxCoroutinesAndroid)
+
+    // Serialization
+    implementation(libs.kotlinxSerializationJson)
+
+    // Logging
+    implementation(libs.slf4jApi)
+    implementation(libs.logbackClassic)
+    implementation(libs.timber)
+
+    // Testing
+    testImplementation(libs.junit)
+    androidTestImplementation(libs.androidxJunit)
+    androidTestImplementation(libs.androidxEspressoCore)
 }
