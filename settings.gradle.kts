@@ -40,3 +40,6 @@ project(":runanywhere-core-onnx").projectDir =
 // Example apps (composite builds for IDE support)
 includeBuild("examples/android/RunAnywhereAI")
 includeBuild("examples/intellij-plugin-demo/plugin")
+
+include(":examples:android:RunAnywhereAI:app")
+project(":examples:android:RunAnywhereAI:app").projectDir = file("examples/android/RunAnywhereAI/app")
