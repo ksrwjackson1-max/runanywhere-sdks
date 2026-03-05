@@ -14,4 +14,3 @@ workflows:
     environment:
       vars:
         RUNANYWHERE_TEST: "true"
-      android: true
