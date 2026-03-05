@@ -1,0 +1,6 @@
+{
+  "model_path": "/storage/emulated/0/Download/RunAnywhere/Models/flax_model.msgpack",
+  "config_path": "/storage/emulated/0/Download/RunAnywhere/Models/Q4_K_M.json",
+  "llm_type": "LFM2",
+  "device": "arm64"
+}
