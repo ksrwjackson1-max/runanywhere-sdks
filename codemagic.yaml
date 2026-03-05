@@ -5,9 +5,6 @@ workflows:
     environment:
       vars:
         OPENAI_API_KEY: Encrypted
-      jdk: openjdk17
-      flutter: none
-      cocoapods: none
     scripts:
       - name: Clean project
         script: ./gradlew clean
