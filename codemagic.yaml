@@ -6,7 +6,7 @@ workflows:
       flutter: stable
       xcode: latest
       cocoapods: default
-      jdk: openjdk17
+      # jdk removed — use the default CodeMagic JDK for Android builds
     scripts:
       - name: Build Debug APK
         script: ./gradlew :android-use-agent:app:assembleDebug
